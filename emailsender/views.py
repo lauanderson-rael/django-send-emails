@@ -5,8 +5,8 @@ from django.core.mail import EmailMessage
 import time
 
 def enviar_email(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
+    #if not request.user.is_authenticated:
+       # return redirect('login')
 
     if request.method == 'POST':
         form = EmailForm(request.POST, request.FILES)
