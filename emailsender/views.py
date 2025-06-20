@@ -1,10 +1,13 @@
 
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import EmailForm
 from django.core.mail import EmailMessage
 import time
 
 def enviar_email(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
     if request.method == 'POST':
         form = EmailForm(request.POST, request.FILES)
         if form.is_valid():
@@ -19,7 +22,7 @@ def enviar_email(request):
                 email = EmailMessage(
                     assunto,
                     mensagem,
-                    'laaunderson38@gmail.com',
+                    'lauanderson38@gmail.com',
                     [email_destino]
                 )
                 if arquivo:

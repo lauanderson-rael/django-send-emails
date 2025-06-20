@@ -17,8 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from emailsender.views import enviar_email
+from login.views import login_view, logout_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', enviar_email, name='enviar_email'),
+    path('home/', enviar_email, name='enviar_email'),
+    path('', login_view, name='login'),
+    path('logout/', logout_view, name='logout'),
 ]
